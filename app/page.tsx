@@ -1,103 +1,109 @@
-import Image from "next/image";
+"use client"
+
+import Head from 'next/head'
+import HeroSection from '../components/HeroSection'
+import TextCard from '../components/TextCard'
+import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+const cardData = [
+  {
+    title: "Aerthys",
+    iconSrc: '/images/aerthys.png',
+    body: 'A whimsical and enchanting name that conjures up images of a world with delicate landscapes, whispering winds, and a gentle climate, perhaps with vast expanses of clouds and mist-shrouded valleys.'
+  },
+  {
+    title: 'Cosmara',
+    iconSrc: '/images/cosmara.png',
+    body: 'A serene and tranquil name that evokes feelings of peace and harmony, perfect for a terrestrial paradise.'
+  },
+  {
+    title: 'Elyria',
+    iconSrc: '/images/elyria.png',
+    body: 'A world where music, art, and creativity flourish, perhaps with cities built into crystal spires or floating islands where the inhabitants cultivate their passions and talents.'
+  },
+  {
+    title: "Kairos",
+    iconSrc:"/images/kairos.png",
+    body:"A planet where the passage of time is marked by significant events, cycles, and transformations, possibly with advanced technologies that manipulate chronology and causality."
+  },
+  {
+    title: "Luminaria",
+    iconSrc:"/images/luminaria.png",
+    body:"A shining name that captures the beauty and radiance of a starlit world, perhaps with a thick atmosphere that scatters light in mesmerizing ways."
+  },
+  {
+    title: "Nexarion",
+    iconSrc:"/images/Nexarion.png",
+    body:"A strong and sturdy name that suggests a planet with a robust infrastructure and a connection to its neighboring worlds, possibly with a rich history of interplanetary trade and commerce."
+  },
+  {
+    title: "Stellaluna",
+    iconSrc:"/images/stellaluna.png",
+    body:"a world where stars are born, die, or undergo other transformations, perhaps with advanced astronomical research facilities and observatories that study the cosmos"
+  },
+  {
+    title: "Terraverde",
+    iconSrc:"/images/terraverde.png",
+    body:"A terrestrial planet teeming with lush green forests, sparkling lakes, and diverse ecosystems, possibly with a strong emphasis on environmental stewardship and conservation."
+  }
+]
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const router = useRouter();
+
+
+  // const changeRoute = (route:string) => {
+
+  //   router.push(`/${route}`)
+
+  // }
+
+  let title = "*";
+
+  const href = `/${title}`
+
+
+  return (
+    <>
+      <Head>
+        <title>Cosmae View</title>
+        <meta name="description" content="A Next.js landing page example" />
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+      </Head>
+
+      <HeroSection />
+
+      
+
+      <main className={styles.main}>
+        <h2>Here are Cosmae's wide range of Planets that can be explored:</h2>
+        <div className={styles.cardsGrid}>
+          {cardData.map(({ title, iconSrc, body }) => (
+
+
+            <Link key={title} href={href.replace("*", title.toLowerCase())}>
+
+
+            <TextCard key={title} title={title} iconSrc={iconSrc}>
+              {body}
+            </TextCard>
+            </Link>
+
+          
+
+            
+          ))}
+
+          
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+     
+
+
+    </>
+  )
 }
