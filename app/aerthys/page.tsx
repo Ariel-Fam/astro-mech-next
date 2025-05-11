@@ -5,6 +5,9 @@ import Image from "next/image";
 import styles from "@/styles/planet_template.module.css"
 export default function aerthys() {
 
+
+    const planetDesribe = "Imagine a realm where pastel dunes ripple beneath a lavender horizon, and dew-flecked blossoms unfurl in hidden alcoves. Here, a soft murmur of air currents carries the distant promise of rain, while towering spires of alabaster stone stand watch over glistening lakes. Bioluminescent moss carpets winding paths, guiding the curious through secret grottoes and along crystalline waterways. As twilight deepens, the sky ignites with prismatic radiance, painting every curve of the terrain in shifting hues. In this serene dominion, each footstep uncovers a new marvel—inviting you to wander, to pause, and to lose yourself in the boundless poetry of the unknown."
+
     return(
 
         <>
@@ -42,7 +45,7 @@ export default function aerthys() {
 
         <div className="flex flex-col content items-center">
 
-        <h3 className={styles.describe}>Imagine a realm where pastel dunes ripple beneath a lavender horizon, and dew-flecked blossoms unfurl in hidden alcoves. Here, a soft murmur of air currents carries the distant promise of rain, while towering spires of alabaster stone stand watch over glistening lakes. Bioluminescent moss carpets winding paths, guiding the curious through secret grottoes and along crystalline waterways. As twilight deepens, the sky ignites with prismatic radiance, painting every curve of the terrain in shifting hues. In this serene dominion, each footstep uncovers a new marvel—inviting you to wander, to pause, and to lose yourself in the boundless poetry of the unknown.</h3>
+        <h3 className={styles.describe}>{planetDesribe}</h3>
         </div>
 
 
@@ -66,7 +69,7 @@ export default function aerthys() {
         </thead>
         <tbody>
 
-            
+
 
 
 
