@@ -4,7 +4,6 @@ import Head from 'next/head'
 import HeroSection from '../components/HeroSection'
 import TextCard from '../components/TextCard'
 import styles from '../styles/Home.module.css'
-import FooterSection from "../components/FooterSection"
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
