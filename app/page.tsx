@@ -35,7 +35,7 @@ const cardData = [
   },
   {
     title: "Nexarion",
-    iconSrc:"/images/Nexarion.png",
+    iconSrc:"/images/nexarion.png",
     body:"A strong and sturdy name that suggests a planet with a robust infrastructure and a connection to its neighboring worlds, possibly with a rich history of interplanetary trade and commerce."
   },
   {
