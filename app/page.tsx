@@ -52,7 +52,7 @@ const cardData = [
 
 export default function Home() {
 
-  let title = "*";
+  const title = "*";
 
   const href = `/${title}`
 
