@@ -5,7 +5,7 @@ import HeroSection from '../components/HeroSection'
 import TextCard from '../components/TextCard'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+
 
 const cardData = [
   {
@@ -52,15 +52,6 @@ const cardData = [
 
 export default function Home() {
 
-  const router = useRouter();
-
-
-  // const changeRoute = (route:string) => {
-
-  //   router.push(`/${route}`)
-
-  // }
-
   let title = "*";
 
   const href = `/${title}`
@@ -101,7 +92,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* <FooterSection /> */}
+ 
 
 
     </>
