@@ -8,14 +8,13 @@ import Link from "next/link";
 export default function aerthys() {
 
 
-    const planetDesribe = "Picture a realm bathed in a soft, luminescent glow, where every horizon gleams with refracted halos of celestial light. Here, a dense mist of ionized particles bends each beam into swirling ribbons of color, turning dusky skies into ever-shifting tapestries of sapphire, rose, and gold. Celestial bodies hover just beyond sight, their distant fires rippling through the vapour to carpet the world below in a delicate lattice of glimmering threads. Underfoot, crystalline plains mirror the heavens above, fracturing each spark into a thousand dancing motes. In this otherworldly expanse, the air itself seems alive with incandescent whispers—inviting explorers to wander beneath its prismatic canopy and lose themselves in the quiet wonder of an atmosphere that turns starlight into poetry."
+    const planetDesribe = "Picture an expanse draped in glowing nebulae, where newborn suns ignite in vibrant plumes of ionized gas and ancient giants collapse into shimmering remnants. Here, crystalline observatories perch atop obsidian plateaus, their cavernous lenses channeling the faintest murmur of distant quasars. Corridors of polished metal wind between arrays of adaptive telescopes, each calibrated to unravel the secrets of supernovae and protostellar nurseries. Beneath domed amphitheaters, scholars convene amid holographic star maps, tracing the life cycles of galaxies in choreographed dance. In phosphorescent courtyards, visitors stroll past reflecting pools that mirror the swirl of cosmic dust and the slow drift of binary pairs. Every beam of light carries a story—of creation, collapse, and rebirth—beckoning you to join the eternal quest to chart the heavens and to marvel at the orchestrated grandeur of the void."
     const orbitalData = 
         {
             mass: "6.50 × 10^24 kg (≈ 1.09 Earth masses)",
             gravity: "11.2 m/s² (≈ 1.14 g; firmly luminous footing)",
             orbitalPeriod: "380.2 days (a year of shifting star-showers)",
             rotationPeriod: "18.4 hours (swift, glimmering dawns)"
-
         }
 
     const atmosphericComposition = {
@@ -650,7 +649,7 @@ export default function aerthys() {
             <button className={styles.buttonNav1}>Previous Page</button>
             </Link>
 
-            <Link href="/nexarion">
+            <Link href="/stellaluna">
             
             <button className={styles.buttonNav2}>Next Planet</button>
             </Link>

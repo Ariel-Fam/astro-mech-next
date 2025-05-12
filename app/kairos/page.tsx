@@ -665,7 +665,7 @@ export default function aerthys() {
 
         <div className="flex flex-col align-center">
 
-        <video src="/videos/elyria.mp4" loop autoPlay ></video>
+        <video src="/videos/kairos.mp4" loop autoPlay ></video>
 
         
         </div>
