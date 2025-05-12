@@ -70,7 +70,7 @@ export default function Home() {
       
 
       <main className={styles.main}>
-        <h2>Here are Cosmae's wide range of Planets that can be explored:</h2>
+        <h2>{`Here are Cosmae's wide range of Planets that can be explored:`}</h2>
         <div className={styles.cardsGrid}>
           {cardData.map(({ title, iconSrc, body }) => (
 
