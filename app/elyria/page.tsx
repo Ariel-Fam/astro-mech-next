@@ -591,6 +591,51 @@ export default function aerthys() {
 
         </table>
 
+        <h1 className="text-3xl mb-10">Solar and Stellar Data:</h1>
+
+
+        <table className={styles.mytable}>
+
+        <thead>
+            <tr>
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>Host Star Luminosity</td>
+            <td>{solarAndStellarData.hostStarLuminosity}</td>
+        </tr>
+
+        <tr>
+            <td>
+                Star Surface Temperature
+            </td>
+
+
+            <td>
+                {solarAndStellarData.starSurfaceTemp}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Solar Irradiance
+            </td>
+
+
+            <td>
+                {solarAndStellarData.solarIrradiance}
+            </td>
+        </tr>
+
+        </tbody>
+
+        </table>
+
 
 
 
@@ -606,7 +651,7 @@ export default function aerthys() {
             <button className={styles.buttonNav1}>Previous Page</button>
             </Link>
 
-            <Link href="/elyria">
+            <Link href="/kairos">
             
             <button className={styles.buttonNav2}>Next Planet</button>
             </Link>
