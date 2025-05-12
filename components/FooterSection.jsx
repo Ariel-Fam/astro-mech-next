@@ -6,7 +6,7 @@ export default function FooterSection(){
 
     return(
 
-        <div className="flex flex-col items-center justify-center p-10 bg-green-800 mt-50  ">
+        <div className="flex flex-col items-center justify-center p-10 bg-green-800   ">
             <Image
             src="/images/luanch_card.png"
             height={100}

@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/planet_template.module.css"
+import Link from "next/link";
+
 export default function aerthys() {
 
 
@@ -596,9 +598,33 @@ export default function aerthys() {
         </div>
 
 
-        <video src=""></video>
+
+        <div className="flex flex-row justify-center ">
+
+            <Link href="/">
+            
+            <button className={styles.buttonNav1}>Home Page</button>
+            </Link>
+
+            <Link href="/elyria">
+            
+            <button className={styles.buttonNav2}>Next Planet</button>
+            </Link>
+        </div>
 
         
+        <h1 className={styles.font}>Surface Preview</h1>
+
+        
+
+        <div className="flex flex-col align-center">
+
+        <video src="/videos/aerthys.mp4" loop autoPlay ></video>
+
+        
+        </div>
+
+
 
 
         

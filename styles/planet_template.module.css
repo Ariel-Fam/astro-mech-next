@@ -99,4 +99,33 @@ transition: 3s ease-in-out;
   .table-wrapper .mytable {
     min-width: 600px;
   }
+
+
+.buttonNav1{
+  background-color: orange;
+  margin-right: 40px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 14px;
+  transition: all 1s ease;
+}
+
+
+  .buttonNav2{
+  background-color: rgb(0, 255, 183);
+  padding: 25px;
+  border-radius: 14px;
+  transition: all 1s ease;
   
+}
+
+.buttonNav1:hover{
+  transform: scale(1.2);
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+
+.buttonNav2:hover{
+  transform: scale(1.2);
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.2);
+}
