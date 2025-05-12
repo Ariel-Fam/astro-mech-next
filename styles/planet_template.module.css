@@ -67,7 +67,7 @@ transition: 3s ease-in-out;
     margin: 1em 0;
     font-family: sans-serif;
     border-radius: 18px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
   
   .mytable th,
@@ -89,7 +89,7 @@ transition: 3s ease-in-out;
   }
   
   .mytable tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #ffe600;
   }
   
   /* Optional responsive wrapper */

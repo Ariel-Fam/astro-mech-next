@@ -22,7 +22,7 @@ export default function TextCard({title, iconSrc, children}){
 
             <p className={styles.body}>{children}</p>
 
-    
+
 
         </div>
     )

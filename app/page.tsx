@@ -102,7 +102,7 @@ export default function Home() {
         </div>
       </main>
 
-      <FooterSection />
+      {/* <FooterSection /> */}
 
 
     </>

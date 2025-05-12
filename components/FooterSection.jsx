@@ -6,12 +6,14 @@ export default function FooterSection(){
 
     return(
 
-        <div>
+        <div className="flex flex-col items-center justify-center p-10 bg-green-800 mt-50  ">
             <Image
-            src="/images/launch_logo.png"
-            height={400}
-            width={600}
+            src="/images/luanch_card.png"
+            height={100}
+            width={300}
+            quality={100}
             alt="Footer Image"
+            className="drop-shadow-2xl animate-bounce  "
             />
 
         </div>
