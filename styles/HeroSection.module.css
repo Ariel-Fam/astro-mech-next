@@ -47,3 +47,10 @@ max-width: 600px;
 transform: scale(1.4);
 font-family: "Freckle Face"
 }
+
+@media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
+    .overlay{
+        transform: scale(50%);
+
+    }
+}

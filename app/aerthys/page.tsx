@@ -451,59 +451,11 @@ export default function aerthys() {
 
         </table>
 
-
-
-
         <h1 className="text-3xl mb-10">Planetary Motion Data:</h1>
 
 
         <table className={styles.mytable}>
-
-        <thead>
-            <tr>
-                <th>Stat</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        <tr>
-            <td>Halo Storm Cycle</td>
-            <td>{planetaryMotionData.eccentricity}</td>
-        </tr>
-
-        <tr>
-            <td>
-                Obliquity
-            </td>
-
-
-            <td>
-                {planetaryMotionData.olbliquiy}
-            </td>
-        </tr>
-
-
-        <tr>
-            <td>
-                Precession Period
-            </td>
-
-
-            <td>
-                {planetaryMotionData.precessionPeriod}
-            </td>
-        </tr>
-
-        </tbody>
-
-        </table>
-
-
-        <h1 className="text-3xl mb-10">Planetary Motion Data:</h1>
-
-
-        <table className={styles.mytable}>
+            
 
         <thead>
             <tr>
