@@ -48,9 +48,28 @@ transform: scale(1.4);
 font-family: "Freckle Face"
 }
 
-@media only screen and (min-width: 375px) and (max-width: 430px) and (orientation: portrait) {
-    .overlay{
-        transform: scale(50%);
-
+@media (max-width: 320px) {      /* XS phones (≤320px) */
+      .overlay{
+        transform: scale(80%);
+      }
     }
-}
+    @media (min-width: 321px) and (max-width: 375px) {  /* S phones (321–375px) */
+      .overlay{
+        transform: scale(80%);
+      }
+    }
+    @media (min-width: 376px) and (max-width: 414px) {  /* M phones (376–414px) */
+      .overlay{
+        transform: scale(80%);
+      }
+    }
+    @media (min-width: 415px) and (max-width: 480px) {  /* L phones (415–480px) */
+      .overlay{
+        transform: scale(80%);
+      }
+    }
+    @media (min-width: 481px) and (max-width: 767px) {  /* XL phones / small tablets */
+      .overlay{
+        transform: scale(80%);
+      }
+    }
