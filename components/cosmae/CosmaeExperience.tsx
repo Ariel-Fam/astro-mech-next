@@ -22,7 +22,7 @@ function OrbitRing({ r }: { r: number }) {
   return (
     <mesh rotation-x={Math.PI / 2}>
       <ringGeometry args={[r - 0.05, r + 0.05, 128]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.1} side={THREE.DoubleSide} />
+      <meshBasicMaterial color="#000000" transparent opacity={0.3} side={THREE.DoubleSide} />
     </mesh>
   );
 }
@@ -340,17 +340,17 @@ export default function CosmaeExperience() {
         onPointerMissed={() => setSelectedId(null)}
         gl={{ antialias: true }}
       >
-        {/* Deep space background */}
-        <color attach="background" args={["#050510"]} />
+        {/* Sky blue space background */}
+        <color attach="background" args={["#87CEEB"]} />
         
         {/* Fog for depth */}
-        <fog attach="fog" args={["#050510", 100, 300]} />
+        <fog attach="fog" args={["#87CEEB", 100, 300]} />
 
         {/* Lighting */}
         <ambientLight intensity={0.3} />
 
-        {/* Star field */}
-        <Stars radius={200} depth={50} count={2000} factor={3} fade speed={0.2} />
+        {/* Star field - black stars, slightly larger */}
+        <Stars radius={200} depth={50} count={2000} factor={5} fade speed={0.2} saturation={0} />
 
         <Suspense
           fallback={
