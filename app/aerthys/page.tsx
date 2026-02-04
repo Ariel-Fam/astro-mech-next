@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function aerthys() {
 
 
-    const planetDesribe = "Imagine a realm where pastel dunes ripple beneath a lavender horizon, and dew-flecked blossoms unfurl in hidden alcoves. Here, a soft murmur of air currents carries the distant promise of rain, while towering spires of alabaster stone stand watch over glistening lakes. Bioluminescent moss carpets winding paths, guiding the curious through secret grottoes and along crystalline waterways. As twilight deepens, the sky ignites with prismatic radiance, painting every curve of the terrain in shifting hues. In this serene dominion, each footstep uncovers a new marvel—inviting you to wander, to pause, and to lose yourself in the boundless poetry of the unknown."
+    const planetDesribe = "Aerthys is a terrestrial exoplanet characterized by extensive silicate dune formations with high albedo minerals that produce a distinctive pastel coloration under its lavender-tinted atmosphere. The planet's surface features significant carbite spire geological formations composed of calcium-aluminum silicates, rising prominently above numerous freshwater lake systems. A notable feature is the widespread presence of bioluminescent organisms, particularly chemiluminescent moss species that colonize low-elevation terrain. The atmosphere exhibits high water vapor content (2.0% by volume), resulting in persistent cloud cover and frequent precipitation. Spectral analysis reveals chromatic atmospheric scattering during twilight periods, caused by suspended particulate matter refracting stellar radiation across multiple wavelengths."
     const orbitalData = 
         {
             mass: "7.85 × 10^24 kg (≈ 1.31 Earth masses)",

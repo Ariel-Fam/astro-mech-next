@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function aerthys() {
 
 
-    const planetDesribe = "Envision a landscape crisscrossed by colossal arcing conduits, their metallic curves spanning from harbor bulwarks to skyborne ports. Towering pylons of bronze and chrome anchor whirling cargo carousels, while glass-sheathed avenues hum with convoys gliding beneath neon pennants. Merchant guilds have inscribed their legacies into sandstone plazas, where interlocking squares host caravans arriving from distant starliners. Overhead, ringed transit loops forge shimmering arcs against a deep cobalt sky, binding this planet to nearby systems in an ever-evolving tapestry of exchange and joint endeavor. Here, each thoroughfare pulses with engineered endurance honed over countless cycles."
+    const planetDesribe = "Nexarion is a large terrestrial planet with mass approximately 1.54 times that of Earth, featuring elevated surface gravity (14.1 m/s², or 1.44 g) and extensive infrastructure supporting interplanetary commerce. The planetary surface is characterized by deep natural harbors with average depths of 4,800 meters and an interconnected canal network covering 20% of the surface area. Atmospheric composition includes methane (2.2 ppm) from industrial biological processes and elevated neon concentrations (0.6% by volume). The planet's strong magnetic field (5.0 × 10⁻⁵ T) provides reliable geomagnetic navigation references. Geothermal gradients of 35-60°C/km support substantial subsurface energy production, while the dense iron-rich bedrock (seismic wave speed: 7.0 km/s) provides stable foundations for heavy infrastructure."
     const orbitalData = 
         {
             mass: "9.20 × 10^24 kg (≈ 1.54 Earth masses)",

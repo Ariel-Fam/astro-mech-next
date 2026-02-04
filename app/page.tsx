@@ -5,6 +5,9 @@ import HeroSection from '../components/HeroSection'
 import TextCard from '../components/TextCard'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from '@/components/ui/button'
 
 
 const cardData = [
@@ -70,26 +73,61 @@ export default function Home() {
       
 
       <main className={styles.main}>
-        <h2>{`Here are Cosmae's wide range of Planets that can be explored:`}</h2>
-        <div className={styles.cardsGrid}>
-          {cardData.map(({ title, iconSrc, body }) => (
+        
+        
+        <Card className="bg-black flex flex-col items-center gap-4 mb-14">
+          <CardContent className="flex-col items-center ">
 
 
-            <Link key={title} href={href.replace("*", title.toLowerCase())}>
-
-
-            <TextCard key={title} title={title} iconSrc={iconSrc}>
-              {body}
-            </TextCard>
+            <Link href={"/cosmae"}>
+              
+              <Image
+              src={"/images/cosmaeView.png"}
+              width={800}
+              height={400}
+              alt="img"
+              className="hover:scale-115"
+              />
+            
             </Link>
 
-          
+
+            <Link href={"/cosmae"}>
+              <Button className="p-8 text-pink-600 bg-blue-400 hover:bg-white hover:scale-110">View 3D Model</Button>
+            
+            </Link>
+
+
+
+          </CardContent>
+        </Card>
+
+        <h2>{`Here is more data on Cosmae's wide range of Planets that can be explored:`}</h2>
+
+        <div className="flex flex-col items-center">
+
+
+          <div className={styles.cardsGrid}>
+            {cardData.map(({ title, iconSrc, body }) => (
+
+
+              <Link key={title} href={href.replace("*", title.toLowerCase())}>
+
+
+              <TextCard key={title} title={title} iconSrc={iconSrc}>
+                {body}
+              </TextCard>
+              </Link>
 
             
-          ))}
 
-          
+              
+            ))}
+
+            
+          </div>
         </div>
+
       </main>
 
 

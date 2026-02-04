@@ -7,7 +7,9 @@ import Link from "next/link";
 export default function aerthys() {
 
 
-    const planetDesribe = "Imagine an expanse of emerald meadows bathed in amber sunlight, where languid breezes carry the delicate perfume of night-blooming jasmine and golden lotus. Along meandering rivulets lined with ivory lilies, soft ripples shimmer like liquid glass. Tall silver-birch trees form natural cathedrals, their foliage quivering in a hushed concert that harmonizes with the distant call of songbirds. Blossoming hedgerows of hyacinth and primrose frame tranquil clearings, inviting wandering souls to rest upon moss-carpeted stones. Here, every breath feels like a chalice of serenity, each heartbeat aligning with the land’s slow rhythm—an earthly sanctuary woven from peace, balance, and the pure promise of rejuvenation."
+    const planetDesribe = "Cosmara is a temperate terrestrial planet exhibiting Earth-analog characteristics with extensive grassland biomes covering approximately 40% of its landmass. The planet's atmosphere, composed primarily of nitrogen (75.0%) and oxygen (23.0%), supports a diverse array of photosynthetic flora including deciduous arboreal species and flowering angiosperms. Surface hydrology consists of interconnected freshwater river systems and crystal-clear waterways comprising 12% of the surface. The planet orbits a G-type main-sequence star with solar irradiance of 1,360 W/m², producing stable thermal conditions conducive to complex biological processes. Geological surveys indicate low seismic activity with predominantly silicate continental crust supporting diverse terrestrial ecosystems."
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const _unused = "’s slow rhythm—an earthly sanctuary woven from peace, balance, and the pure promise of rejuvenation."
     const orbitalData = 
         {
             mass: "75.40 × 10^24 kg (≈ 0.90 Earth masses)",
