@@ -234,90 +234,90 @@ export default function CosmaeExperience() {
     <div className="relative h-dvh w-full overflow-hidden bg-black">
       {/* UI Overlay */}
       <div className="pointer-events-none absolute inset-0 z-10">
-        <div className="pointer-events-auto absolute left-4 top-4 max-w-md rounded-2xl bg-black/60 p-4 text-white backdrop-blur-md border border-white/10">
-          <div className="text-sm opacity-70">Cosmae System</div>
-          <div className="text-2xl font-semibold">Planetary Observatory</div>
-          <div className="mt-2 text-sm opacity-70">
-            Drag to orbit &bull; Scroll to zoom &bull; Click a planet to inspect
+        <div className="pointer-events-auto absolute left-2 right-2 top-2 sm:left-4 sm:right-auto sm:top-4 sm:max-w-md rounded-2xl bg-black/70 sm:bg-black/60 p-3 sm:p-4 text-white backdrop-blur-md border border-white/10">
+          <div className="text-xs sm:text-sm opacity-70">Cosmae System</div>
+          <div className="text-lg sm:text-2xl font-semibold">Planetary Observatory</div>
+          <div className="mt-1 sm:mt-2 text-xs sm:text-sm opacity-70">
+            Drag to orbit &bull; Scroll to zoom &bull; Tap a planet to inspect
           </div>
         </div>
 
         {selected && (
-          <div className="pointer-events-auto absolute right-4 top-4 w-[400px] max-h-[90vh] rounded-2xl bg-black/70 text-white backdrop-blur-md border border-white/10 overflow-hidden flex flex-col">
+          <div className="pointer-events-auto absolute inset-x-2 bottom-2 sm:inset-auto sm:right-4 sm:top-4 sm:w-[400px] max-h-[70vh] sm:max-h-[90vh] rounded-2xl bg-black/80 sm:bg-black/70 text-white backdrop-blur-md border border-white/10 overflow-hidden flex flex-col shadow-2xl">
             {/* Planet Image */}
-            <div className="relative w-full h-44 shrink-0">
+            <div className="relative w-full h-32 sm:h-44 shrink-0">
               <Image
                 src={selected.image}
                 alt={selected.name}
                 fill
                 className="object-cover"
-                sizes="400px"
+                sizes="(max-width: 640px) 100vw, 400px"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               <button
-                className="absolute top-3 right-3 rounded-full bg-black/50 p-2 hover:bg-black/70 transition-colors"
+                className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-black/60 p-2 hover:bg-black/80 transition-colors"
                 onClick={() => setSelectedId(null)}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <div className="absolute bottom-3 left-4">
-                <div className="text-xs opacity-70">{selected.stats.classification}</div>
-                <div className="text-2xl font-semibold">{selected.name}</div>
+              <div className="absolute bottom-2 left-3 sm:bottom-3 sm:left-4">
+                <div className="text-[10px] sm:text-xs opacity-80 font-medium">{selected.stats.classification}</div>
+                <div className="text-xl sm:text-2xl font-semibold">{selected.name}</div>
               </div>
             </div>
             
             {/* Scrollable Content */}
-            <div className="p-4 overflow-y-auto flex-1">
+            <div className="p-3 sm:p-4 overflow-y-auto flex-1 overscroll-contain">
               {/* Description */}
-              <p className="text-sm opacity-80 leading-relaxed">{selected.description}</p>
+              <p className="text-sm leading-relaxed text-white/90">{selected.description}</p>
               
               {/* Surface Conditions Grid */}
-              <div className="mt-4 pt-3 border-t border-white/10">
-                <div className="text-xs font-semibold opacity-70 mb-2 uppercase tracking-wider">Surface Conditions</div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white/5 rounded-lg p-2">
-                    <div className="text-xs opacity-50">Gravity</div>
-                    <div className="text-sm font-medium">{selected.surfaceConditions.gravity}</div>
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-white/10">
+                <div className="text-[10px] sm:text-xs font-semibold text-white/70 mb-2 uppercase tracking-wider">Surface Conditions</div>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="bg-white/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-white/60">Gravity</div>
+                    <div className="text-sm font-medium text-white">{selected.surfaceConditions.gravity}</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-2">
-                    <div className="text-xs opacity-50">Day Length</div>
-                    <div className="text-sm font-medium">{selected.surfaceConditions.dayLength}</div>
+                  <div className="bg-white/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-white/60">Day Length</div>
+                    <div className="text-sm font-medium text-white">{selected.surfaceConditions.dayLength}</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-2">
-                    <div className="text-xs opacity-50">Year Length</div>
-                    <div className="text-sm font-medium">{selected.surfaceConditions.yearLength}</div>
+                  <div className="bg-white/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-white/60">Year Length</div>
+                    <div className="text-sm font-medium text-white">{selected.surfaceConditions.yearLength}</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-2">
-                    <div className="text-xs opacity-50">Temperature</div>
-                    <div className="text-sm font-medium">{selected.surfaceConditions.temperature}</div>
+                  <div className="bg-white/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-white/60">Temperature</div>
+                    <div className="text-sm font-medium text-white">{selected.surfaceConditions.temperature}</div>
                   </div>
                 </div>
-                <div className="mt-2 bg-white/5 rounded-lg p-2">
-                  <div className="text-xs opacity-50">Surface Pressure</div>
-                  <div className="text-sm font-medium">{selected.surfaceConditions.surfacePressure}</div>
+                <div className="mt-2 bg-white/10 rounded-lg p-2">
+                  <div className="text-[10px] sm:text-xs text-white/60">Surface Pressure</div>
+                  <div className="text-sm font-medium text-white">{selected.surfaceConditions.surfacePressure}</div>
                 </div>
               </div>
               
               {/* Atmosphere */}
-              <div className="mt-4 pt-3 border-t border-white/10">
-                <div className="text-xs font-semibold opacity-70 mb-1 uppercase tracking-wider">Atmosphere</div>
-                <div className="text-sm opacity-80">{selected.stats.atmosphere}</div>
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-white/10">
+                <div className="text-[10px] sm:text-xs font-semibold text-white/70 mb-1 uppercase tracking-wider">Atmosphere</div>
+                <div className="text-sm text-white/90">{selected.stats.atmosphere}</div>
               </div>
               
               {/* Climate */}
-              <div className="mt-3">
-                <div className="text-xs font-semibold opacity-70 mb-1 uppercase tracking-wider">Climate</div>
-                <div className="text-sm opacity-80">{selected.stats.climate}</div>
+              <div className="mt-2 sm:mt-3">
+                <div className="text-[10px] sm:text-xs font-semibold text-white/70 mb-1 uppercase tracking-wider">Climate</div>
+                <div className="text-sm text-white/90">{selected.stats.climate}</div>
               </div>
               
               {/* Notable Features */}
-              <div className="mt-4 pt-3 border-t border-white/10">
-                <div className="text-xs font-semibold opacity-70 mb-2 uppercase tracking-wider">Notable Features</div>
-                <div className="flex flex-wrap gap-2">
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-white/10">
+                <div className="text-[10px] sm:text-xs font-semibold text-white/70 mb-2 uppercase tracking-wider">Notable Features</div>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {selected.stats.notable.map((feature, i) => (
-                    <span key={i} className="text-xs bg-white/10 px-2 py-1 rounded-full">
+                    <span key={i} className="text-[11px] sm:text-xs bg-white/15 px-2 py-1 rounded-full text-white/90">
                       {feature}
                     </span>
                   ))}
@@ -325,9 +325,9 @@ export default function CosmaeExperience() {
               </div>
               
               {/* Civilization */}
-              <div className="mt-3">
-                <div className="text-xs font-semibold opacity-70 mb-1 uppercase tracking-wider">Civilization</div>
-                <div className="text-sm opacity-80">{selected.stats.civilization}</div>
+              <div className="mt-2 sm:mt-3 pb-2">
+                <div className="text-[10px] sm:text-xs font-semibold text-white/70 mb-1 uppercase tracking-wider">Civilization</div>
+                <div className="text-sm text-white/90">{selected.stats.civilization}</div>
               </div>
             </div>
           </div>
