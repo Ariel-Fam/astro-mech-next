@@ -58,7 +58,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "aerthys",
     name: "Aerthys",
     image: "/cosmae/aerthys.png",
-    description: "A realm where pastel dunes ripple beneath a lavender horizon, and dew-flecked blossoms unfurl in hidden alcoves. Towering spires of alabaster stone stand watch over glistening lakes, while bioluminescent moss carpets winding paths through secret grottoes.",
+    description: "Aerthys is a terrestrial exoplanet characterized by extensive silicate dune formations with high albedo minerals producing distinctive pastel coloration. The surface features carbite spire geological formations above freshwater lake systems, with widespread bioluminescent moss species colonizing low-elevation terrain. High atmospheric water vapor (2.0%) results in persistent cloud cover and chromatic scattering during twilight.",
     surfaceConditions: {
       gravity: "0.94g",
       dayLength: "30.2 hours",
@@ -89,7 +89,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "cosmara",
     name: "Cosmara",
     image: "/cosmae/cosmara.png",
-    description: "An expanse of emerald meadows bathed in amber sunlight, where languid breezes carry the delicate perfume of night-blooming jasmine. Tall silver-birch trees form natural cathedrals, their foliage quivering in hushed harmony with distant songbirds.",
+    description: "Cosmara is a temperate terrestrial planet with Earth-analog characteristics, featuring extensive grassland biomes covering 40% of landmass. The nitrogen-oxygen atmosphere supports diverse photosynthetic flora including deciduous arboreal species. Surface hydrology consists of interconnected freshwater systems comprising 12% of the surface, with stable thermal conditions from G-type stellar irradiance.",
     surfaceConditions: {
       gravity: "1.03g",
       dayLength: "22.6 hours",
@@ -120,7 +120,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "elyria",
     name: "Elyria",
     image: "/cosmae/elyria.png",
-    description: "A domain where every zephyr carries a gentle serenade, and corridors of light refract through towering glass pinnacles. Levitating isles drift upon soft currents, crowned with open-air ateliers where denizens coax color and form from the ether.",
+    description: "Elyria is distinguished by anomalous low-density geological formations and localized gravitational variations resulting in buoyant landmasses. The crust contains high concentrations of piezoelectric quartz minerals producing electromagnetic resonance. Elevated neon content (30 ppm) contributes to luminescent phenomena within crystalline structures, while fault lines contain optically-active mineral deposits.",
     surfaceConditions: {
       gravity: "1.01g",
       dayLength: "23.1 hours",
@@ -153,7 +153,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "kairos",
     name: "Kairos",
     image: "/cosmae/kairos.png",
-    description: "A realm where each era is heralded by grand milestones—towering monoliths at the turning of every epoch. Workshops of burnished alloy hum with resonant power, weaving echoes of the past and visions of futures yet to dawn.",
+    description: "Kairos is a super-Earth class exoplanet (1.39 Earth masses) with elevated atmospheric krypton (15 ppm) exhibiting unique quantum properties. The extended 442-day orbital period creates pronounced seasonal variations. Geological features include massive igneous formations and dense metalite alloy structures. The chrono-magnetosphere exhibits periodic fluctuations synchronized with K-type stellar activity.",
     surfaceConditions: {
       gravity: "1.27g",
       dayLength: "27.5 hours",
@@ -186,7 +186,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "luminaria",
     name: "Luminaria",
     image: "/cosmae/luminaria.png",
-    description: "An expanse draped in glowing nebulae, where crystalline observatories perch atop obsidian plateaus. Beneath domed amphitheaters, scholars convene amid holographic star maps, tracing the life cycles of galaxies in choreographed dance.",
+    description: "Luminaria orbits within a stellar region of ionized hydrogen nebulae and active star-forming zones. The F-type host star (1.20 L☉) produces elevated irradiance (1,450 W/m²) and enhanced atmospheric scattering. Surface geology features basaltic plateaus and obsidian formations. The magnetic field (4.2 × 10⁻⁵ T) generates prominent auroral displays, with 31° obliquity creating extended multi-spectral twilight periods.",
     surfaceConditions: {
       gravity: "1.14g",
       dayLength: "18.4 hours",
@@ -221,7 +221,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "nexarion",
     name: "Nexarion",
     image: "/cosmae/nexarion.png",
-    description: "A landscape crisscrossed by colossal arcing conduits spanning from harbor bulwarks to skyborne ports. Towering pylons of bronze and chrome anchor whirling cargo carousels, while glass-sheathed avenues hum with convoys gliding beneath neon pennants.",
+    description: "Nexarion is a large terrestrial planet (1.54 Earth masses) with elevated surface gravity (1.44 g) and extensive commercial infrastructure. Deep natural harbors average 4,800 meters with interconnected canal networks covering 20% of surface area. The strong magnetic field (5.0 × 10⁻⁵ T) enables reliable geomagnetic navigation, while geothermal gradients (35-60°C/km) support subsurface energy production.",
     surfaceConditions: {
       gravity: "1.44g",
       dayLength: "20.0 hours",
@@ -252,7 +252,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "stellaluna",
     name: "Stellaluna",
     image: "/cosmae/stellaluna.png",
-    description: "A world where newborn suns ignite in vibrant plumes and ancient giants collapse into shimmering remnants. Corridors of polished metal wind between adaptive telescopes, each calibrated to unravel the secrets of supernovae.",
+    description: "Stellaluna is optimized for astronomical observation with 52% high-reflectivity oceanic coverage ideal for interferometric measurements. The G5V-type host star provides high-contrast illumination. Elevated argon (3.5%) and trace xenon (15 ppm) support precision spectroscopy. Moderate 22° axial tilt ensures balanced observation windows, while iron-rich rift zones accommodate vibration-isolated research facilities.",
     surfaceConditions: {
       gravity: "1.10g",
       dayLength: "19.7 hours",
@@ -285,7 +285,7 @@ export const COSMAE_PLANETS: PlanetDef[] = [
     id: "terraverde",
     name: "Terraverde",
     image: "/cosmae/terraverde.png",
-    description: "A realm where ancient canopies soar above emerald understories, filtering golden sunbeams onto meandering waterways. Hidden springs bubble forth in secluded hollows, feeding tranquil pools that mirror drifting clouds.",
+    description: "Terraverde is a temperate terrestrial planet (0.95 Earth masses, 0.98 g) supporting extensive biodiversity. Dense forest ecosystems cover 35% of landmass with canopy heights exceeding 60 meters. The hydrological cycle includes 60% oceanic coverage and 10% freshwater networks. Earth-like atmospheric composition (78.9% N₂, 20.7% O₂) with 1.8 ppm methane indicates active wetland biogenic processes.",
     surfaceConditions: {
       gravity: "0.98g",
       dayLength: "24.5 hours",
