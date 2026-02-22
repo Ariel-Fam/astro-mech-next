@@ -27,8 +27,55 @@ function OrbitRing({ r }: { r: number }) {
   );
 }
 
-function StarCore() {
+// Etaroth star data - 11 solar mass B-type star
+const ETAROTH_DATA = {
+  name: "Etaroth",
+  image: "/images/etaroth.png",
+  classification: "B2V Main Sequence Star",
+  description: "Etaroth is a massive B-type main sequence star with 11 solar masses, serving as the gravitational anchor of the Cosmae system. At approximately 22,000 K surface temperature, it emits intense blue-white radiation with luminosity exceeding 12,000 times that of Earth's Sun. The star's high mass drives hydrogen fusion primarily through the CNO cycle in its convective core, producing the energy that sustains all eight orbiting worlds.",
+  stellarProperties: {
+    mass: "11 M☉ (2.19 × 10³¹ kg)",
+    radius: "5.2 R☉ (3.62 × 10⁶ km)",
+    luminosity: "12,400 L☉",
+    surfaceTemp: "22,000 K",
+    spectralClass: "B2V",
+    age: "~18 million years",
+  },
+  physicalProperties: {
+    coreDensity: "~35 g/cm³",
+    coreTemp: "~32 million K",
+    rotationPeriod: "1.8 days",
+    magneticField: "~850 Gauss",
+    escapeVelocity: "720 km/s",
+    surfaceGravity: "~8,200 m/s²",
+  },
+  composition: {
+    hydrogen: "71.2%",
+    helium: "27.1%",
+    carbon: "0.4%",
+    nitrogen: "0.12%",
+    oxygen: "0.8%",
+    heavier: "0.38%",
+  },
+  characteristics: [
+    "CNO cycle fusion",
+    "Convective core",
+    "Radiative envelope",
+    "Strong stellar wind",
+    "UV-dominant spectrum",
+  ],
+  evolutionaryFate: "Etaroth will exhaust its hydrogen fuel in approximately 12 million years, expanding into a blue supergiant before ending its life in a Type II supernova, potentially leaving behind a neutron star or black hole remnant.",
+};
+
+function StarCore({ 
+  selected, 
+  onSelect 
+}: { 
+  selected: boolean; 
+  onSelect: () => void;
+}) {
   const meshRef = useRef<THREE.Mesh>(null);
+  const [hovered, setHovered] = useState(false);
 
   useFrame((_, dt) => {
     if (meshRef.current) {
@@ -37,7 +84,21 @@ function StarCore() {
   });
 
   return (
-    <group>
+    <group
+      onClick={(e) => {
+        e.stopPropagation();
+        onSelect();
+      }}
+      onPointerOver={(e) => {
+        e.stopPropagation();
+        setHovered(true);
+        document.body.style.cursor = "pointer";
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        document.body.style.cursor = "default";
+      }}
+    >
       {/* Central light source */}
       <pointLight intensity={44} distance={200} decay={1} color="#f56929" />
       
@@ -58,6 +119,23 @@ function StarCore() {
         <sphereGeometry args={[2, 16, 16]} />
         <meshBasicMaterial color="#ffeebb" transparent opacity={0.15} />
       </mesh>
+
+      {/* Selection halo */}
+      {selected && (
+        <mesh rotation-x={Math.PI / 2}>
+          <ringGeometry args={[2.8, 3.1, 64]} />
+          <meshBasicMaterial color="#fbbf24" transparent opacity={0.6} side={THREE.DoubleSide} />
+        </mesh>
+      )}
+
+      {/* Label */}
+      {(hovered || selected) && (
+        <Html distanceFactor={12} position={[0, 4, 0]} transform>
+          <div className="rounded-full bg-amber-500/80 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm border border-amber-300/40 whitespace-nowrap">
+            ☀ Etaroth
+          </div>
+        </Html>
+      )}
     </group>
   );
 }
@@ -197,6 +275,7 @@ export default function CosmaeExperience() {
   });
 
   const [selectedId, setSelectedId] = useState<PlanetId | null>(null);
+  const [starSelected, setStarSelected] = useState(false);
 
   const selected = useMemo(
     () => planets.find((p) => p.id === selectedId) ?? null,
@@ -222,13 +301,31 @@ export default function CosmaeExperience() {
     await c.setLookAt(camPos.x, camPos.y, camPos.z, pos.x, pos.y, pos.z, true);
   }, [planets]);
 
+  const focusStar = useCallback(async () => {
+    const c = controlsRef.current;
+    if (!c) return;
+    await c.setLookAt(12, 8, 12, 0, 0, 0, true);
+  }, []);
+
   const selectPlanet = useCallback(
     (id: PlanetId) => {
+      setStarSelected(false);
       setSelectedId(id);
       focusPlanet(id);
     },
     [focusPlanet]
   );
+
+  const selectStar = useCallback(() => {
+    setSelectedId(null);
+    setStarSelected(true);
+    focusStar();
+  }, [focusStar]);
+
+  const clearSelection = useCallback(() => {
+    setSelectedId(null);
+    setStarSelected(false);
+  }, []);
 
   return (
     <div className="relative h-dvh w-full overflow-hidden bg-black">
@@ -242,6 +339,7 @@ export default function CosmaeExperience() {
           </div>
         </div>
 
+        {/* Planet Info Card */}
         {selected && (
           <div className="pointer-events-auto absolute inset-x-2 bottom-2 sm:inset-auto sm:right-4 sm:top-4 sm:w-[400px] max-h-[70vh] sm:max-h-[90vh] rounded-2xl bg-black/80 sm:bg-black/70 text-white backdrop-blur-md border border-white/10 overflow-hidden flex flex-col shadow-2xl">
             {/* Planet Image */}
@@ -256,7 +354,7 @@ export default function CosmaeExperience() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               <button
                 className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-black/60 p-2 hover:bg-black/80 transition-colors"
-                onClick={() => setSelectedId(null)}
+                onClick={clearSelection}
               >
                 <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -332,12 +430,138 @@ export default function CosmaeExperience() {
             </div>
           </div>
         )}
+
+        {/* Star Info Card */}
+        {starSelected && (
+          <div className="pointer-events-auto absolute inset-x-2 bottom-2 sm:inset-auto sm:right-4 sm:top-4 sm:w-[400px] max-h-[70vh] sm:max-h-[90vh] rounded-2xl bg-black/80 sm:bg-black/70 text-white backdrop-blur-md border border-amber-500/20 overflow-hidden flex flex-col shadow-2xl">
+            {/* Star Image */}
+            <div className="relative w-full h-32 sm:h-44 shrink-0 bg-gradient-to-b from-amber-900/50 to-black">
+              <Image
+                src={ETAROTH_DATA.image}
+                alt={ETAROTH_DATA.name}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, 400px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+              <button
+                className="absolute top-2 right-2 sm:top-3 sm:right-3 rounded-full bg-black/60 p-2 hover:bg-black/80 transition-colors"
+                onClick={clearSelection}
+              >
+                <svg className="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="absolute bottom-2 left-3 sm:bottom-3 sm:left-4">
+                <div className="text-[10px] sm:text-xs text-amber-300 font-medium">{ETAROTH_DATA.classification}</div>
+                <div className="text-xl sm:text-2xl font-semibold text-amber-100">{ETAROTH_DATA.name}</div>
+              </div>
+            </div>
+            
+            {/* Scrollable Content */}
+            <div className="p-3 sm:p-4 overflow-y-auto flex-1 overscroll-contain">
+              {/* Description */}
+              <p className="text-sm leading-relaxed text-white/90">{ETAROTH_DATA.description}</p>
+              
+              {/* Stellar Properties Grid */}
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-amber-500/20">
+                <div className="text-[10px] sm:text-xs font-semibold text-amber-300/80 mb-2 uppercase tracking-wider">Stellar Properties</div>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Mass</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.mass}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Radius</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.radius}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Luminosity</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.luminosity}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Surface Temp</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.surfaceTemp}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Spectral Class</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.spectralClass}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Age</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.stellarProperties.age}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Physical Properties */}
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-amber-500/20">
+                <div className="text-[10px] sm:text-xs font-semibold text-amber-300/80 mb-2 uppercase tracking-wider">Physical Properties</div>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Core Temp</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.physicalProperties.coreTemp}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Core Density</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.physicalProperties.coreDensity}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Rotation</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.physicalProperties.rotationPeriod}</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2">
+                    <div className="text-[10px] sm:text-xs text-amber-200/60">Magnetic Field</div>
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.physicalProperties.magneticField}</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Composition */}
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-amber-500/20">
+                <div className="text-[10px] sm:text-xs font-semibold text-amber-300/80 mb-2 uppercase tracking-wider">Chemical Composition</div>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="bg-amber-500/10 rounded-lg p-2 text-center">
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.composition.hydrogen}</div>
+                    <div className="text-[10px] text-amber-200/60">Hydrogen</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2 text-center">
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.composition.helium}</div>
+                    <div className="text-[10px] text-amber-200/60">Helium</div>
+                  </div>
+                  <div className="bg-amber-500/10 rounded-lg p-2 text-center">
+                    <div className="text-sm font-medium text-white">{ETAROTH_DATA.composition.oxygen}</div>
+                    <div className="text-[10px] text-amber-200/60">Oxygen</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Characteristics */}
+              <div className="mt-3 sm:mt-4 pt-3 border-t border-amber-500/20">
+                <div className="text-[10px] sm:text-xs font-semibold text-amber-300/80 mb-2 uppercase tracking-wider">Characteristics</div>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {ETAROTH_DATA.characteristics.map((char, i) => (
+                    <span key={i} className="text-[11px] sm:text-xs bg-amber-500/20 px-2 py-1 rounded-full text-amber-100">
+                      {char}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Evolutionary Fate */}
+              <div className="mt-2 sm:mt-3 pb-2">
+                <div className="text-[10px] sm:text-xs font-semibold text-amber-300/80 mb-1 uppercase tracking-wider">Evolutionary Fate</div>
+                <div className="text-sm text-white/90">{ETAROTH_DATA.evolutionaryFate}</div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <Canvas
         dpr={[1, 1.5]}
         camera={{ position: [0, 40, 80], fov: 50, near: 0.1, far: 500 }}
-        onPointerMissed={() => setSelectedId(null)}
+        onPointerMissed={clearSelection}
         gl={{ antialias: true }}
       >
         {/* Sky blue space background */}
@@ -362,7 +586,7 @@ export default function CosmaeExperience() {
           }
         >
           {/* Central star */}
-          <StarCore />
+          <StarCore selected={starSelected} onSelect={selectStar} />
 
           {/* Orbit rings */}
           {planets.map((p) => (
